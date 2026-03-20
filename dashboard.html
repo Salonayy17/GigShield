@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GigShield — Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+</head>
+<body class="dashboard-page">
+
+  <!-- ═══════════════════════════════════════
+       DEMO SLIDESHOW OVERLAY
+  ═══════════════════════════════════════ -->
+  <div id="demoOverlay" class="demo-overlay" style="display:none">
+    <div class="demo-slide-wrap">
+
+      <!-- Progress bar -->
+      <div class="demo-progress-bar">
+        <div class="demo-progress-fill" id="demoProgressFill"></div>
+      </div>
+
+      <!-- Slide counter -->
+      <div class="demo-counter" id="demoCounter">1 / 7</div>
+
+      <!-- Close -->
+      <button class="demo-close" onclick="exitDemo()">✕ Exit Demo</button>
+
+      <!-- Slides -->
+      <div class="demo-slides" id="demoSlides">
+
+        <!-- Slide 1: Welcome -->
+        <div class="demo-slide active" data-slide="0">
+          <div class="slide-icon">⚡</div>
+          <div class="slide-tag">Welcome</div>
+          <h2>GigShield</h2>
+          <p>AI-powered <strong>income protection</strong> for India's 15 million gig delivery workers. Weekly plans from ₹20. Instant UPI payouts. Zero paperwork.</p>
+          <div class="slide-chips">
+            <span>🌧️ Weather triggers</span>
+            <span>🤖 AI predictions</span>
+            <span>💸 Auto payouts</span>
+            <span>🛡️ Fraud detection</span>
+          </div>
+        </div>
+
+        <!-- Slide 2: Subscription -->
+        <div class="demo-slide" data-slide="1">
+          <div class="slide-icon">📋</div>
+          <div class="slide-tag">Feature 1</div>
+          <h2>Weekly Subscription</h2>
+          <p>Workers subscribe for as little as <strong>₹20/week</strong>. Premium is calculated dynamically based on their zone, season, and current weather risk.</p>
+          <div class="demo-plan-cards">
+            <div class="demo-plan">
+              <span class="plan-name">Basic</span>
+              <span class="plan-price">₹20</span>
+              <span class="plan-cover">Up to ₹500 cover</span>
+            </div>
+            <div class="demo-plan active-plan">
+              <span class="plan-badge-sm">Popular</span>
+              <span class="plan-name">Shield Pro</span>
+              <span class="plan-price">₹35</span>
+              <span class="plan-cover">Up to ₹1,500 cover</span>
+            </div>
+            <div class="demo-plan">
+              <span class="plan-name">Max</span>
+              <span class="plan-price">₹50</span>
+              <span class="plan-cover">Up to ₹2,500 cover</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Weather Impact Index -->
+        <div class="demo-slide" data-slide="2">
+          <div class="slide-icon">🌦️</div>
+          <div class="slide-tag">Feature 2</div>
+          <h2>Weather Impact Index</h2>
+          <p>GigShield calculates a real-time <strong>WII score (0–100)</strong> from rainfall, AQI, temperature and wind. Payouts trigger automatically when WII ≥ 40.</p>
+          <div class="demo-wii-visual">
+            <div class="wii-formula">
+              <span class="wii-part rain">Rainfall<br/><small>×40pts</small></span>
+              <span class="wii-plus">+</span>
+              <span class="wii-part aqi">AQI<br/><small>×25pts</small></span>
+              <span class="wii-plus">+</span>
+              <span class="wii-part temp">Temp<br/><small>×15pts</small></span>
+              <span class="wii-plus">+</span>
+              <span class="wii-part wind">Wind<br/><small>×20pts</small></span>
+              <span class="wii-plus">=</span>
+              <span class="wii-result">WII<br/><small>0–100</small></span>
+            </div>
+            <div class="wii-threshold">⚡ Payout triggers at WII ≥ 40</div>
+          </div>
+        </div>
+
+        <!-- Slide 4: AI Earnings Predictor -->
+        <div class="demo-slide" data-slide="3">
+          <div class="slide-icon">🤖</div>
+          <div class="slide-tag">Feature 3</div>
+          <h2>AI Earnings Predictor</h2>
+          <p>Our AI compares <strong>predicted vs actual earnings</strong> each week. The gap determines payout amount — no manual claim forms needed.</p>
+          <div class="demo-earnings-flow">
+            <div class="earn-box expected">
+              <span class="earn-label">AI Predicted</span>
+              <span class="earn-val">₹2,450</span>
+              <span class="earn-sub">Based on history + location + weather</span>
+            </div>
+            <div class="earn-arrow">→</div>
+            <div class="earn-box actual">
+              <span class="earn-label">Actual Earned</span>
+              <span class="earn-val red-val">₹1,820</span>
+              <span class="earn-sub">Logged from delivery platform</span>
+            </div>
+            <div class="earn-arrow">→</div>
+            <div class="earn-box payout">
+              <span class="earn-label">Payout</span>
+              <span class="earn-val green-val">₹630</span>
+              <span class="earn-sub">Sent to UPI automatically</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Fraud Detection -->
+        <div class="demo-slide" data-slide="4">
+          <div class="slide-icon">🛡️</div>
+          <div class="slide-tag">Feature 4</div>
+          <h2>5-Layer Fraud Detection</h2>
+          <p>Every payout request is automatically validated through <strong>5 rule-based checks</strong> before approval. No fraudulent claims get through.</p>
+          <div class="demo-fraud-layers">
+            <div class="fraud-layer">📍 Location verification — GPS zone match</div>
+            <div class="fraud-layer">🚶 Movement analysis — stationary = flagged</div>
+            <div class="fraud-layer">👥 Group fraud — mass claim detection</div>
+            <div class="fraud-layer">🌧️ Weather match — WII must confirm disruption</div>
+            <div class="fraud-layer">📊 Amount check — claim vs historical ratio</div>
+          </div>
+        </div>
+
+        <!-- Slide 6: Dynamic Pricing -->
+        <div class="demo-slide" data-slide="5">
+          <div class="slide-icon">⚖️</div>
+          <div class="slide-tag">Feature 5</div>
+          <h2>Dynamic Risk Pricing</h2>
+          <p>Weekly premium updates every Sunday based on <strong>zone risk, seasonal factors and live WII</strong>. Workers in flood-prone zones pay slightly more during monsoon.</p>
+          <div class="demo-risk-visual">
+            <div class="risk-row-demo">
+              <span>WII Score</span>
+              <div class="risk-bar-track"><div class="risk-bar-fill" style="width:65%;background:var(--saffron)"></div></div>
+              <span>×50%</span>
+            </div>
+            <div class="risk-row-demo">
+              <span>Zone Risk</span>
+              <div class="risk-bar-track"><div class="risk-bar-fill" style="width:40%;background:#3b82f6"></div></div>
+              <span>×30%</span>
+            </div>
+            <div class="risk-row-demo">
+              <span>Season</span>
+              <div class="risk-bar-track"><div class="risk-bar-fill" style="width:25%;background:#10b981"></div></div>
+              <span>×20%</span>
+            </div>
+            <div class="risk-result-demo">→ Premium: <strong>₹35/week</strong></div>
+          </div>
+        </div>
+
+        <!-- Slide 7: Try it Live -->
+        <div class="demo-slide" data-slide="6">
+          <div class="slide-icon">🚀</div>
+          <div class="slide-tag">Try it Live</div>
+          <h2>Explore the Dashboard</h2>
+          <p>The full dashboard is live behind this overlay. Simulate rain, trigger payouts, inspect fraud scores and explore the micro-zone map.</p>
+          <div class="slide-chips">
+            <span>☀️ Simulate weather</span>
+            <span>💸 Trigger payout</span>
+            <span>🗺️ Zone map</span>
+            <span>📋 Claims history</span>
+          </div>
+          <button class="btn-enter-dashboard" onclick="exitDemo()">Enter Dashboard →</button>
+        </div>
+
+      </div><!-- /slides -->
+
+      <!-- Navigation -->
+      <div class="demo-nav">
+        <button class="demo-btn-nav prev" id="demoPrev" onclick="demoNav(-1)" disabled>← Prev</button>
+        <div class="demo-dots" id="demoDots"></div>
+        <button class="demo-btn-nav next" id="demoNext" onclick="demoNav(1)">Next →</button>
+      </div>
+
+      <!-- Auto-play toggle -->
+      <div class="demo-autoplay-row">
+        <label class="toggle-label">
+          <input type="checkbox" id="autoplayToggle" checked onchange="toggleAutoplay(this.checked)"/>
+          <span class="toggle-track"></span>
+          <span>Auto-advance (5s)</span>
+        </label>
+      </div>
+
+    </div>
+  </div>
+  <!-- /demo overlay -->
+
+
+  <!-- ═══════════════════════════════════════
+       NOTIFICATION BANNER
+  ═══════════════════════════════════════ -->
+  <div id="notifBanner" class="notif-banner" style="display:none">
+    <span id="notifText"></span>
+    <button onclick="closeNotif()">✕</button>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       SIDEBAR
+  ═══════════════════════════════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span>⚡</span><span class="brand-text">GigShield</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-section="dashboard"><span class="ni">📊</span><span>Dashboard</span></a>
+      <a href="#" class="nav-item" data-section="earnings"><span class="ni">💰</span><span>Earnings</span></a>
+      <a href="#" class="nav-item" data-section="claims"><span class="ni">📋</span><span>Claims</span></a>
+      <a href="#" class="nav-item" data-section="fraud"><span class="ni">🛡️</span><span>Fraud Score</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="plan-chip">
+        <div class="plan-chip-top">
+          <span id="planBadge">⚡ Shield Pro</span>
+          <span id="planPrice" class="plan-price-chip">₹35/wk</span>
+        </div>
+        <div class="plan-chip-status">
+          <span class="status-dot"></span>
+          <span id="planStatus">Active · 4 days left</span>
+        </div>
+      </div>
+      <button class="btn-demo-relaunch" onclick="launchDemo()">▶ Relaunch Demo</button>
+      <button class="btn-logout" onclick="logout()">← Logout</button>
+    </div>
+  </aside>
+
+
+  <!-- ═══════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════ -->
+  <main class="main-content">
+
+    <div class="topbar">
+      <div class="topbar-left">
+        <h2 id="sectionTitle">Dashboard</h2>
+        <span id="demoTag" class="demo-badge" style="display:none">🎯 DEMO</span>
+      </div>
+      <div class="topbar-right">
+        <div class="worker-chip">
+          <div class="worker-av" id="workerAvatar">R</div>
+          <div>
+            <div class="worker-name" id="workerName">Ravi Kumar</div>
+            <div class="worker-sub" id="workerPlatform">Zomato · Chennai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── DASHBOARD ─── -->
+    <section id="section-dashboard" class="section active">
+
+      <div id="weatherAlert" class="weather-alert" style="display:none">
+        <span class="alert-emoji" id="alertEmoji">🌧️</span>
+        <div class="alert-body">
+          <strong id="alertTitle">Rain Detected</strong>
+          <p id="alertDesc">Disruption active in your zone. Payout may be triggered.</p>
+        </div>
+        <button class="btn-claim-now" onclick="scrollToPayout()">Claim Now →</button>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Expected Earnings</div>
+          <div class="stat-num" id="expectedEarnings">₹2,450</div>
+          <div class="stat-hint">AI predicted this week</div>
+        </div>
+        <div class="stat-card warn-card">
+          <div class="stat-label">Actual Earnings</div>
+          <div class="stat-num" id="actualEarnings">₹1,820</div>
+          <div class="stat-hint">Logged so far</div>
+        </div>
+        <div class="stat-card highlight-card">
+          <div class="stat-label">Income Gap</div>
+          <div class="stat-num" id="incomeGap">₹630</div>
+          <div class="stat-hint" id="gapStatus">Eligible for payout</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Claims</div>
+          <div class="stat-num">₹1,700</div>
+          <div class="stat-hint">3 claims paid out</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+
+        <!-- Weather card -->
+        <div class="card">
+          <div class="card-hd">
+            <span class="card-title">🌦️ Weather Impact Index</span>
+            <span class="live-pill">● LIVE</span>
+          </div>
+          <div class="wii-big" id="wiiScore">0</div>
+          <div class="wii-sublabel" id="wiiLabel">Calculating...</div>
+          <div class="wii-bars">
+            <div class="wbar"><span>Rainfall</span><div class="btrack"><div class="bfill rain" id="barRain"></div></div><span id="valRain">0 mm</span></div>
+            <div class="wbar"><span>AQI</span><div class="btrack"><div class="bfill aqi" id="barAqi"></div></div><span id="valAqi">0</span></div>
+            <div class="wbar"><span>Temp</span><div class="btrack"><div class="bfill temp" id="barTemp"></div></div><span id="valTemp">0°C</span></div>
+            <div class="wbar"><span>Wind</span><div class="btrack"><div class="bfill wind" id="barWind"></div></div><span id="valWind">0 km/h</span></div>
+          </div>
+          <div class="sim-section">
+            <div class="sim-label">Simulate Weather</div>
+            <div class="sim-btns">
+              <button class="sbtn" onclick="simulateWeather('normal')">☀️ Normal</button>
+              <button class="sbtn" onclick="simulateWeather('rain')">🌧️ Rain</button>
+              <button class="sbtn active-sim" onclick="simulateWeather('heavy')">⛈️ Storm</button>
+              <button class="sbtn" onclick="simulateWeather('aqi')">😷 AQI</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Risk Meter -->
+        <div class="card">
+          <div class="card-hd"><span class="card-title">⚠️ Risk Meter</span></div>
+          <div class="meter-wrap">
+            <svg viewBox="0 0 200 120" class="meter-svg">
+              <defs>
+                <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#10b981"/>
+                  <stop offset="50%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#ef4444"/>
+                </linearGradient>
+              </defs>
+              <path d="M20 110 A90 90 0 0 1 180 110" stroke="#f0ece4" stroke-width="16" fill="none"/>
+              <path id="meterArc" d="M20 110 A90 90 0 0 1 180 110" stroke="url(#arcGrad)" stroke-width="16" fill="none"
+                stroke-dasharray="283" stroke-dashoffset="283" stroke-linecap="round"/>
+              <text x="100" y="105" text-anchor="middle" class="meter-num" id="meterVal">0</text>
+              <text x="100" y="118" text-anchor="middle" class="meter-sub-text">Risk Score</text>
+            </svg>
+            <div class="meter-tags"><span>Low</span><span>Med</span><span>High</span></div>
+          </div>
+          <div class="risk-list">
+            <div class="risk-item"><span>Weather Risk</span><span class="rpill low" id="riskWeather">Low</span></div>
+            <div class="risk-item"><span>Zone Risk</span><span class="rpill med" id="riskZone">Medium</span></div>
+            <div class="risk-item"><span>Seasonal</span><span class="rpill low" id="riskSeasonal">Low</span></div>
+            <div class="risk-item premium-item"><span>This Week's Premium</span><span class="prem-val" id="dynamicPremium">₹35</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Payout -->
+      <div class="card payout-card" id="payoutSection">
+        <div class="card-hd"><span class="card-title">💸 Request Payout</span></div>
+        <div class="payout-grid">
+          <div class="payout-info">
+            <div class="pi-row"><span>Eligibility</span><span class="badge green" id="payoutEligibility">Eligible ✅</span></div>
+            <div class="pi-row"><span>Payout Amount</span><strong id="payoutAmount">₹630</strong></div>
+            <div class="pi-row"><span>WII Status</span><span id="wiiThreshold">Current: 0 (need ≥ 40)</span></div>
+            <div class="pi-row"><span>Fraud Check</span><span class="badge green" id="fraudScoreDisplay">✅ Clean</span></div>
+          </div>
+          <div class="payout-action">
+            <div class="upi-field">
+              <span class="upi-label">UPI ID</span>
+              <input type="text" id="upiId" value="ravi@oksbi" placeholder="yourname@upi"/>
+            </div>
+            <button class="btn-payout" id="payoutBtn" onclick="triggerPayout()">⚡ Request via UPI</button>
+            <div id="payoutResult" class="payout-result" style="display:none"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── EARNINGS ─── -->
+    <section id="section-earnings" class="section">
+      <div class="card">
+        <div class="card-hd"><span class="card-title">📈 AI Earnings Predictor</span></div>
+        <div class="earn-stat-row">
+          <div class="earn-stat"><div class="es-label">Base Avg (4 wks)</div><div class="es-val">₹2,200</div></div>
+          <div class="earn-stat"><div class="es-label">Weather Penalty</div><div class="es-val red-num" id="weatherAdj">-₹0</div></div>
+          <div class="earn-stat"><div class="es-label">Location Demand</div><div class="es-val green-num">+₹430</div></div>
+          <div class="earn-stat highlight-stat"><div class="es-label">AI Predicted</div><div class="es-val" id="aiPredicted">₹2,450</div></div>
+        </div>
+        <div class="chart-area">
+          <div class="chart-title">Weekly Earnings — Last 6 Weeks</div>
+          <div class="bar-chart" id="earningsChart"></div>
+          <div class="chart-legend">
+            <span><span class="leg-box saffron"></span> Expected</span>
+            <span><span class="leg-box green"></span> Actual</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><span class="card-title">🗺️ Micro-Zone Coverage Map</span></div>
+        <div class="zone-map">
+          <div class="zone-dot-wrap" style="top:22%;left:32%">
+            <div class="zdot high pulsing"></div>
+            <div class="zlabel">Anna Nagar<small>High Demand</small></div>
+          </div>
+          <div class="zone-dot-wrap" style="top:52%;left:62%">
+            <div class="zdot med"></div>
+            <div class="zlabel">T. Nagar<small>Medium Risk</small></div>
+          </div>
+          <div class="zone-dot-wrap" style="top:72%;left:28%">
+            <div class="zdot low"></div>
+            <div class="zlabel">Adyar<small>Low Risk</small></div>
+          </div>
+          <div class="zone-dot-wrap" style="top:38%;left:72%">
+            <div class="zdot high"></div>
+            <div class="zlabel">Velachery<small>Rain Risk</small></div>
+          </div>
+        </div>
+        <p class="zone-note">📍 Your zone: <strong>Anna Nagar, Chennai</strong> · Active coverage · High demand tier</p>
+      </div>
+    </section>
+
+    <!-- ─── CLAIMS ─── -->
+    <section id="section-claims" class="section">
+      <div class="card">
+        <div class="card-hd"><span class="card-title">📋 Claims History</span></div>
+        <div id="claimsList" class="claims-list"></div>
+      </div>
+    </section>
+
+    <!-- ─── FRAUD ─── -->
+    <section id="section-fraud" class="section">
+      <div class="card">
+        <div class="card-hd"><span class="card-title">🛡️ Fraud Detection Engine</span></div>
+        <div id="fraudChecks" class="fraud-list"></div>
+        <div class="fraud-total-row">
+          <span class="fraud-total-label">Fraud Score</span>
+          <div class="fraud-track"><div class="fraud-fill-bar" id="fraudFill" style="width:15%"></div></div>
+          <span id="fraudScoreNum" class="fraud-num">15 / 100</span>
+        </div>
+        <div class="fraud-verdict" id="fraudNote">✅ Account looks clean. No suspicious activity detected.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

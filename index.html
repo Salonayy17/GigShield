@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GigShield — Income Protection</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+</head>
+<body class="login-page">
+
+  <div class="login-bg">
+    <div class="login-blob b1"></div>
+    <div class="login-blob b2"></div>
+  </div>
+
+  <div class="login-layout">
+
+    <!-- Left Hero -->
+    <div class="login-left">
+      <div class="login-brand">
+        <div class="brand-mark">⚡</div>
+        <span>GigShield</span>
+      </div>
+      <div class="login-hero">
+        <h1>Protect your<br/><em>income,</em><br/>every week.</h1>
+        <p>Parametric income insurance for India's delivery workers. Automatic UPI payouts when rain, storms or bad air disrupts your earnings.</p>
+      </div>
+      <div class="login-pills">
+        <span class="pill">🛵 Zomato</span>
+        <span class="pill">🛍️ Swiggy</span>
+        <span class="pill">⚡ Zepto</span>
+        <span class="pill">📦 Amazon</span>
+        <span class="pill">🚴 Dunzo</span>
+      </div>
+      <div class="login-stats">
+        <div class="lstat"><strong>₹20</strong><small>Weekly plans</small></div>
+        <div class="lstat"><strong>2 min</strong><small>Payout speed</small></div>
+        <div class="lstat"><strong>Zero</strong><small>Paperwork</small></div>
+      </div>
+    </div>
+
+    <!-- Right Card -->
+    <div class="login-right">
+      <div class="login-card">
+        <h2>Welcome back</h2>
+        <p class="login-sub">Sign in to your account</p>
+
+        <div id="loginError" class="error-msg" style="display:none"></div>
+
+        <div class="field">
+          <label>Mobile / Email</label>
+          <input type="text" id="loginId" value="demo@gigshield.in" placeholder="demo@gigshield.in"/>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="loginPass" value="demo123" placeholder="••••••••"/>
+        </div>
+
+        <button class="btn-signin" onclick="handleLogin()">Sign In</button>
+
+        <div class="or-row"><span>or</span></div>
+
+        <button class="btn-demo" onclick="handleDemoLogin()">
+          <span class="demo-play">▶</span>
+          <div class="demo-text">
+            <strong>Start Demo Slideshow</strong>
+            <small>Auto-guided tour of all features</small>
+          </div>
+        </button>
+
+        <p class="login-footer">Plans from ₹20/week · UPI payouts · No forms</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
